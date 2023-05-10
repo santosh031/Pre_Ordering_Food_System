@@ -47,7 +47,7 @@ router.get('/getById/:id',auth.authenticateToken,(req,res,next)=>{
     var query = "select id,name,description,price from product where id= ?";
     connection.query(query,[id],(err,results)=>{
         if(!err){
-            return res.status(200).json(results);
+            return res.status(200).json(results[0]);
         }
         else{
             return res.status(500).json(err);
